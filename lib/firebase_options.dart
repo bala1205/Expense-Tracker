@@ -4,6 +4,10 @@ import 'package:flutter/foundation.dart'
 
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
+    if (kIsWeb) {
+      return web;
+    }
+
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
@@ -16,6 +20,16 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyBfI0jRTPpcr78k6ltyhtl5mKvOcjKnNZE',
+    appId: '1:450820705072:web:c0b8496441d745ed66d6f5',
+    messagingSenderId: '450820705072',
+    projectId: 'expense-track-839af',
+    authDomain: 'expense-track-839af.firebaseapp.com',
+    storageBucket: 'expense-track-839af.firebasestorage.app',
+    measurementId: 'G-BM1P9WXQ1K',
+  );
+
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBXfByjUhLIi0QTv3gGlxU5wObODaoixBA',
     appId: '1:450820705072:android:71c58de17b67122866d6f5',
@@ -26,7 +40,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBXfByjUhLIi0QTv3gGlxU5wObODaoixBA',
-    appId: '1:450820705072:android:71c58de17b67122866d6f5',
+    appId: '1:450820705072:ios:YOUR_IOS_APP_ID',
     messagingSenderId: '450820705072',
     projectId: 'expense-track-839af',
     storageBucket: 'expense-track-839af.firebasestorage.app',
