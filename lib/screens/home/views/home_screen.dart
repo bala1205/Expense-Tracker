@@ -18,6 +18,21 @@ class _HomeScreenState extends State<HomeScreen> {
   Color selectedItem = Colors.blue;
   Color unselectedItem = Colors.grey;
 
+  bool _isPushing = false;
+
+  void _openAddExpense() {
+    if (_isPushing) return;
+    _isPushing = true;
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const AddExpense(),
+      ),
+    ).then((_) {
+      _isPushing = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,14 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButtonLocation:
       FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const AddExpense(),
-            ),
-          );
-        },
+        onPressed: _openAddExpense,
         shape: const CircleBorder(),
         child: Container(
           width: 60,
